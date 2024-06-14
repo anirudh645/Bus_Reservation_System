@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Logout Confirmation</title>
+	<link rel="stylesheet" href="Logout.css">
+	<link rel="icon" type="image/x-icon" href="title icon.jpeg">
+</head>
+
+<body>
+	<h1>Are you sure you want to logout?</h1>
+	<p>Click "Logout" to confirm, or "Cancel" to stay logged in.</p>
+	<form action="LogoutServlet" method="post">
+		<input type="hidden" name="action" value="logout">
+		<button type="submit">Logout</button>
+		<a href="javascript:history.back()">Cancel</a>
+	</form>
+</body>
+
+</html>
