@@ -2,16 +2,24 @@ body {
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 20px;
+<<<<<<< HEAD
 	background-color: #f4f7f6;
 	/* A very light background color */
+=======
+>>>>>>> f060c9a3e93416fae95530a84014f99340188871
 }
 
 h1 {
 	text-align: center;
+<<<<<<< HEAD
 	font-size: 2.2em;
 	/* Slightly larger heading */
 	margin-bottom: 30px;
 	color: #333;
+=======
+	font-size: 2em;
+	margin-bottom: 20px;
+>>>>>>> f060c9a3e93416fae95530a84014f99340188871
 }
 
 form {
@@ -20,6 +28,7 @@ form {
 	justify-content: center;
 	margin: 0 auto;
 	width: 60%;
+<<<<<<< HEAD
 	max-width: 550px;
 	/* Slightly increased max-width for the form */
 	padding: 30px;
@@ -38,10 +47,20 @@ form {
 	/* Consistent margin for all form groups */
 	width: 100%;
 	/* Each form group spans the full width */
+=======
+	max-width: 500px;
+}
+
+.form-group {
+	margin: 10px 15px;
+	width: 100%;
+	/* Make each form group span the full width */
+>>>>>>> f060c9a3e93416fae95530a84014f99340188871
 }
 
 .form-group label {
 	display: block;
+<<<<<<< HEAD
 	margin-bottom: 8px;
 	font-weight: bold;
 	color: #555;
@@ -163,4 +182,66 @@ button:active {
 .bus-note strong {
 	color: #457b9d;
 	/* A more distinct blue for strong text */
+=======
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	width: 100%;
+}
+
+button {
+	background-color: #3dd9d6;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 1em;
+	transition: all 0.3s ease;
+	margin: 0 auto;
+}
+
+button:hover {
+	background-color: #0062cc;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+select {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+button[type="submit"] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+>>>>>>> f060c9a3e93416fae95530a84014f99340188871
 }

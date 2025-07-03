@@ -17,8 +17,13 @@ public class Reset_Completion extends HttpServlet {
     PreparedStatement checkStmt = null;
     ResultSet checkResult = null;
     private static final String DB_URL = "jdbc:mysql://localhost:3306/bus_reservation";
+<<<<<<< HEAD
     private static final String DB_USER = "busappuser"; // Replace with your MySQL username
     private static final String DB_PASSWORD = "C-DfK%H^_fv@7zM"; // Replace with your MySQL password
+=======
+    private static final String DB_USER = "root"; // Replace with your MySQL username
+    private static final String DB_PASSWORD = ""; // Replace with your MySQL password
+>>>>>>> f060c9a3e93416fae95530a84014f99340188871
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

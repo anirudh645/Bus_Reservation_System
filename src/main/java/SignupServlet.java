@@ -46,8 +46,13 @@ public class SignupServlet extends HttpServlet {
 
             // Replace with your database connection details
             String url = "jdbc:mysql://localhost:3306/bus_reservation";
+<<<<<<< HEAD
             String usernameDb = "busappuser";
             String passwordDb = "C-DfK%H^_fv@7zM";
+=======
+            String usernameDb = "root";
+            String passwordDb = "";
+>>>>>>> f060c9a3e93416fae95530a84014f99340188871
 
             Connection connection = null;
             PreparedStatement stmt = null;
