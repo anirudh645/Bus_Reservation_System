@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Deploy to Tomcat') {
             steps {
-                deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://localhost:8080')], contextPath: '/EasyBus', war: '/target/Bus_Ticketing_System-0.0.1-SNAPSHOT.war'
+                deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://localhost:8080')], contextPath: '/EasyBus', war: 'target/Bus_Ticketing_System-0.0.1-SNAPSHOT.war'
             }
         }
     }
