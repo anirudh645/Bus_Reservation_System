@@ -63,6 +63,7 @@ Bus_Reservation_System/
 │           ├── images/        # Project images
 │           └── WEB-INF/       # Configuration files
 ├── target/                    # Compiled classes
+├── bus_reservation.sql       # Database schema and sample data
 ├── Jenkinsfile               # CI/CD pipeline configuration
 ├── pom.xml                   # Maven configuration
 └── README.md                 # Project documentation
@@ -75,6 +76,8 @@ The system uses MySQL database with the following main entities:
 - **Buses** - Bus details and route information
 - **Bookings** - Ticket booking records
 - **Routes** - Bus route and schedule data
+
+📁 **Database Export**: The complete database schema with sample data is available in `bus_reservation.sql` for easy setup and testing.
 
 ## 🚦 Getting Started
 
@@ -96,7 +99,10 @@ The system uses MySQL database with the following main entities:
 2. **Set up MySQL Database**
    ```sql
    CREATE DATABASE bus_reservation;
-   -- Import your database schema here
+   USE bus_reservation;
+   
+   -- Import the provided database schema and sample data
+   SOURCE bus_reservation.sql;
    ```
 
 3. **Configure Database Connection**
