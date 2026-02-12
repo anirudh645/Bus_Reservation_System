@@ -42,9 +42,9 @@ public class View_All_Tickets extends HttpServlet {
             ResultSet ticketResult = null;
             ResultSet routeResult = null;
             ResultSet busResult = null;
-            String url = "jdbc:mysql://localhost:3306/bus_reservation";
-            String username = "root";
-            String password = "";
+            String url = "jdbc:mysql://bus_reservation_db:3306/bus_reservation";
+            String username = "bus_user";
+            String password = "bus_password";
 
             try {
                 // Replace with your database connection details
