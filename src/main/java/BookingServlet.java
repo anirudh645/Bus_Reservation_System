@@ -29,9 +29,9 @@ public class BookingServlet extends HttpServlet {
         String journeyDateStr = request.getParameter("journeyDate");
         String timeStr = request.getParameter("startTime");
         // Replace with your actual database connection details
-        String url = "jdbc:mysql://localhost:3306/bus_reservation";
-        String username = "root";
-        String password = "";
+        String url = "jdbc:mysql://bus_reservation_db:3306/bus_reservation";
+        String username = "bus_user";
+        String password = "bus_password";
         String resultantbus_id = "";
         int resseatingcapacity = 0;
 
