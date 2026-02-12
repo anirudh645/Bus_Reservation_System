@@ -1,3 +1,34 @@
+target/
+build/
+*.class
+
+# Maven
+.mvn/
+.m2/
+
+# IDEs
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Env files
+.env
+.env.local
+
+# Docker
+**/docker-compose.override.yml
+
+# Legacy Maven metadata
 target/m2e-wtp/web-resources/META-INF/maven/Bus_Ticketing_System/Bus_Ticketing_System/pom.properties
 # Maven
 target/
