@@ -11,12 +11,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', credentialsId: 'anirudh645', url: "${GIT_REPO}"
-            }
-        }
-
         stage('Build Maven') {
             steps {
                 sh 'mvn clean package -DskipTests'
@@ -35,8 +29,8 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        docker-compose down || true
-                        docker-compose up -d
+                        docker compose down || true
+                        docker compose up -d
                         sleep 30
                     '''
                 }
@@ -64,14 +58,14 @@ pipeline {
 
     post {
         always {
-            sh 'docker system prune -f'
+            sh 'docker system prune -f || true'
         }
         success {
             echo 'Deployment successful!'
         }
         failure {
             echo 'Deployment failed! Rolling back...'
-            sh 'docker-compose down'
+            sh 'docker compose down || true'
         }
     }
 }

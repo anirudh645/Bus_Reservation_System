@@ -30,3 +30,4 @@ Thumbs.db
 
 # Legacy Maven metadata
 target/m2e-wtp/web-resources/META-INF/maven/Bus_Ticketing_System/Bus_Ticketing_System/pom.properties
+Bus_reservation_system.jar
