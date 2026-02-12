@@ -1,9 +1,12 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven_3_9_6'
+    }
+
     environment {
         DOCKER_IMAGE = "bus-reservation:${BUILD_NUMBER}"
-        DOCKER_REGISTRY = "your-registry"  // Update with your Docker registry
         GIT_REPO = "https://github.com/anirudh645/Bus_Reservation_System"
     }
 
@@ -28,18 +31,6 @@ pipeline {
             }
         }
 
-        stage('Push to Registry') {
-            when {
-                branch 'main'  // Only push on main branch
-            }
-            steps {
-                script {
-                    sh 'docker tag ${DOCKER_IMAGE} ${DOCKER_REGISTRY}/${DOCKER_IMAGE}'
-                    sh 'docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE}'
-                }
-            }
-        }
-
         stage('Deploy with Docker Compose') {
             steps {
                 script {
@@ -57,7 +48,7 @@ pipeline {
                 script {
                     sh '''
                         for i in {1..10}; do
-                            if curl -f http://localhost:8080 > /dev/null 2>&1; then
+                            if curl -f http://localhost:8081 > /dev/null 2>&1; then
                                 echo "Application is healthy"
                                 exit 0
                             fi
