@@ -11,7 +11,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Runtime
-FROM tomcat:10.1
+FROM tomcat:9.0-jdk21-temurin
 
 # Remove default ROOT application
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
