@@ -1,21 +1,86 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE = "bus-reservation:${BUILD_NUMBER}"
+        DOCKER_REGISTRY = "your-registry"  // Update with your Docker registry
+        GIT_REPO = "https://github.com/anirudh645/Bus_Reservation_System"
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'anirudh645', url: 'https://github.com/anirudh645/Bus_Reservation_System'
+                git branch: 'main', credentialsId: 'anirudh645', url: "${GIT_REPO}"
             }
         }
-        stage('Build') {
+
+        stage('Build Maven') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean package -DskipTests'
             }
         }
-        stage('Deploy to Tomcat') {
+
+        stage('Build Docker Image') {
             steps {
-                deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://localhost:8080')], contextPath: '/EasyBus', war: 'target/Bus_Ticketing_System-0.0.1-SNAPSHOT.war'
+                script {
+                    sh 'docker build -t ${DOCKER_IMAGE} .'
+                }
             }
+        }
+
+        stage('Push to Registry') {
+            when {
+                branch 'main'  // Only push on main branch
+            }
+            steps {
+                script {
+                    sh 'docker tag ${DOCKER_IMAGE} ${DOCKER_REGISTRY}/${DOCKER_IMAGE}'
+                    sh 'docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE}'
+                }
+            }
+        }
+
+        stage('Deploy with Docker Compose') {
+            steps {
+                script {
+                    sh '''
+                        docker-compose down || true
+                        docker-compose up -d
+                        sleep 30
+                    '''
+                }
+            }
+        }
+
+        stage('Health Check') {
+            steps {
+                script {
+                    sh '''
+                        for i in {1..10}; do
+                            if curl -f http://localhost:8080 > /dev/null 2>&1; then
+                                echo "Application is healthy"
+                                exit 0
+                            fi
+                            echo "Waiting for application to start... Attempt $i"
+                            sleep 5
+                        done
+                        exit 1
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            sh 'docker system prune -f'
+        }
+        success {
+            echo 'Deployment successful!'
+        }
+        failure {
+            echo 'Deployment failed! Rolling back...'
+            sh 'docker-compose down'
         }
     }
 }

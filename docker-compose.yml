@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: bus_reservation_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bus_reservation
+      MYSQL_USER: bus_user
+      MYSQL_PASSWORD: bus_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./bus_reservation.sql:/docker-entrypoint-initdb.d/bus_reservation.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    networks:
+      - bus_network
+
+  # Tomcat Application
+  tomcat:
+    build: .
+    container_name: bus_reservation_app
+    ports:
+      - "8080:8080"
+    environment:
+      JAVA_OPTS: "-Xmx512m -Xms256m"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - bus_network
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+
+networks:
+  bus_network:
+    driver: bridge

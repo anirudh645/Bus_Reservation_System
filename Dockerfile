@@ -1,0 +1,30 @@
+# Multi-stage build for Bus Reservation System
+# Stage 1: Build
+FROM maven:3.9-eclipse-temurin-18 AS builder
+WORKDIR /build
+
+# Copy pom.xml and source code
+COPY pom.xml .
+COPY src ./src
+
+# Build the project
+RUN mvn clean package -DskipTests
+
+# Stage 2: Runtime
+FROM tomcat:10.1-jdk18-eclipse-temurin
+
+# Remove default ROOT application
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+
+# Copy WAR file from builder stage
+COPY --from=builder /build/target/Bus_Ticketing_System-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+
+# Expose port
+EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8080/ || exit 1
+
+# Start Tomcat
+CMD ["catalina.sh", "run"]
