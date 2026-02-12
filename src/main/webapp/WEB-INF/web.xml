@@ -10,4 +10,77 @@
     <!-- Enable annotation scanning for servlets -->
     <metadata-complete>false</metadata-complete>
 
+    <!-- Explicit Servlet Mappings -->
+    <servlet>
+        <servlet-name>LoginVerification</servlet-name>
+        <servlet-class>LoginVerification</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginVerification</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SignupServlet</servlet-name>
+        <servlet-class>SignupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignupServlet</servlet-name>
+        <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BookingServlet</servlet-name>
+        <servlet-class>BookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookingServlet</servlet-name>
+        <url-pattern>/search-buses</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HistoryRetrieval</servlet-name>
+        <servlet-class>HistoryRetrieval</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HistoryRetrieval</servlet-name>
+        <url-pattern>/view-history</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>View_All_Tickets</servlet-name>
+        <servlet-class>View_All_Tickets</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>View_All_Tickets</servlet-name>
+        <url-pattern>/alltickets</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Reset_Completion</servlet-name>
+        <servlet-class>Reset_Completion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Reset_Completion</servlet-name>
+        <url-pattern>/reset</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>View_history</servlet-name>
+        <servlet-class>View_history</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>View_history</servlet-name>
+        <url-pattern>/viewTickets</url-pattern>
+    </servlet-mapping>
+
 </web-app>
