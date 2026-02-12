@@ -20,7 +20,7 @@ RUN rm -rf /usr/local/tomcat/webapps/ROOT
 RUN sed -i 's/port="8080"/port="8081"/' /usr/local/tomcat/conf/server.xml
 
 # Copy WAR file from builder stage
-COPY --from=builder /build/target/Bus_Ticketing_System-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=builder /build/target/ROOT.war /usr/local/tomcat/webapps/ROOT.war
 
 # Expose port
 EXPOSE 8081
