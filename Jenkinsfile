@@ -73,5 +73,6 @@ pipeline {
             echo 'Deployment failed! Rolling back...'
             sh 'docker-compose down'
         }
+        
     }
 }
