@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven_3_9_6'
+    }
+
     environment {
         DOCKER_IMAGE = "bus-reservation:${BUILD_NUMBER}"
         GIT_REPO = "https://github.com/anirudh645/Bus_Reservation_System"
